@@ -3,10 +3,6 @@ SELECT * FROM netflix.netflix_titles;
 CREATE TABLE netflix_stagging AS 
 SELECT * FROM netflix_titles;
 -- FIND duplicate and delete 
-SELECT *, 
-row_number() OVER(PARTITION BY type,title,director,cast,country,country,date_added,release_year,rating,duration,listed_in)
-FROM  netflix_stagging;
-
 WITH netflix_stagging AS 
 (SELECT *, 
 row_number() OVER(PARTITION BY type,title,director,cast,country,country,date_added,release_year,rating,duration,listed_in) 
